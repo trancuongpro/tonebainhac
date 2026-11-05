@@ -1,0 +1,275 @@
+﻿:root {
+  --bg-color: #0b0d14;
+  --card-bg: rgba(18, 22, 36, 0.75);
+  --accent-cyan: #00f2ff;
+  --accent-magenta: #ff007f;
+  --accent-blue: #7000ff;
+  --text-main: #ffffff;
+  --text-muted: #8e9aaf;
+  --border-glow: rgba(0, 242, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Effect Glow */
+.ambient-background {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(112, 0, 255, 0.25) 0%, rgba(0, 242, 255, 0.15) 40%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Glassmorphism Card Main Container */
+.app-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 242, 255, 0.4);
+  border-radius: 28px;
+  padding: 36px 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+              0 0 30px rgba(0, 242, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+}
+
+.logo-icon {
+  font-size: 32px;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 0 10px var(--accent-cyan));
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #fff 30%, var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Tone Result Display */
+.display-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.ring-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glow-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+              linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta)) border-box;
+  box-shadow: 0 0 25px rgba(0, 242, 255, 0.3), inset 0 0 15px rgba(112, 0, 255, 0.4);
+  transition: all 0.5s ease;
+}
+
+.glow-ring.listening {
+  animation: pulse-ring 1.5s infinite linear;
+  box-shadow: 0 0 40px rgba(255, 0, 127, 0.6), inset 0 0 20px rgba(0, 242, 255, 0.6);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); rotate: 0deg; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); rotate: 360deg; }
+}
+
+.tone-display {
+  font-size: 56px;
+  font-weight: 900;
+  text-shadow: 0 0 20px var(--accent-cyan);
+  color: #ffffff;
+  z-index: 2;
+}
+
+.tone-type {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  letter-spacing: 1px;
+}
+
+/* Progress Bar */
+.progress-section {
+  width: 100%;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  box-shadow: 0 0 10px var(--accent-cyan);
+  transition: width 0.1s linear;
+}
+
+.status-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Glow Button */
+.action-section {
+  width: 100%;
+}
+
+.glow-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(112, 0, 255, 0.8), rgba(0, 242, 255, 0.8));
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 242, 255, 0.3),
+              inset 0 0 10px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glow-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.glow-btn:hover::before {
+  left: 100%;
+}
+
+.glow-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 242, 255, 0.5),
+              inset 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+.glow-btn:active {
+  transform: translateY(1px);
+}
+
+.glow-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Chromagram Bars */
+.chroma-section {
+  width: 100%;
+}
+
+.chroma-visualizer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 60px;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chroma-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.chroma-bar {
+  width: 100%;
+  height: 5%;
+  background: linear-gradient(to top, var(--accent-blue), var(--accent-cyan));
+  border-radius: 4px;
+  transition: height 0.1s ease;
+  min-height: 2px;
+}
+
+.chroma-bar.active {
+  background: linear-gradient(to top, var(--accent-magenta), #fff);
+  box-shadow: 0 0 8px var(--accent-magenta);
+}
+
+.chroma-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  font-weight: 600;
+}

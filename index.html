@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Detector Pro | Tone Music Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient-background"></div>
+
+  <main class="app-card">
+    <header class="app-header">
+      <div class="logo-icon">🎵</div>
+      <h1>Tone Bài Nhạc</h1>
+      <p class="subtitle">Sử Dụng Công Nghệ DSP</p>
+    </header>
+
+    <section class="display-section">
+      <div class="ring-container">
+        <div class="glow-ring" id="glowRing"></div>
+        <div class="tone-display" id="toneDisplay">--</div>
+      </div>
+      <div class="tone-type" id="toneType">Sẵn Sàng Phân Tích</div>
+    </section>
+
+    <section class="progress-section">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="status-text" id="statusText">Nhấn nút bên dưới và cho nghe 8 giây nhạc</div>
+    </section>
+
+    <section class="action-section">
+      <button id="listenBtn" class="glow-btn">
+        <span class="btn-icon">🎤</span>
+        <span class="btn-text">BẮT ĐẦU NGHE</span>
+      </button>
+    </section>
+
+    <section class="chroma-section">
+      <div class="chroma-visualizer" id="chromaBars"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
